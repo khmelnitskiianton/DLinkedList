@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <ctype.h>
 
-#include "main.h"
-#include "func.h"
+#include "DLinkList.h"
 
 int main()
 {
-    LinkList_t myLinkList = {};
-    ListCtor (&myLinkList);
+    DLL_LinkList_t myLinkList = {};
+    DLL_Ctor (&myLinkList);
 
-    PushFront(10, &myLinkList);
-    PushBack(9, &myLinkList);
+    DLL_PushFront(10, &myLinkList);
+    DLL_PushBack(9, &myLinkList);
 
-    ListDtor (&myLinkList);
+    printf("%p\n", DLL_Find(9, &myLinkList));
+    printf("%p\n", DLL_Find(11, &myLinkList));
+    printf("%p\n", DLL_Find(10, &myLinkList));
+
+    DLL_Dtor (&myLinkList);
     return 0;
 }
