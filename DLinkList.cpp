@@ -59,8 +59,10 @@ int DLL_Dtor (DLL_LinkList_t* myLinkList)
 {
     MYASSERT(myLinkList, BAD_POINTER_PASSED_IN_FUNC, return 0)
 
+    if (!(myLinkList->Head)) return 1;
+
     DLL_Node_t* NextNode = NULL;
-    
+
     NextNode = (myLinkList->Head)->Next;
 
     while(NextNode != NULL)
