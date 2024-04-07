@@ -9,6 +9,7 @@ int main()
     DLL_Ctor (&myLinkList);
 
     DLL_PushFront(10, &myLinkList);
+    DLL_PushFront(11, &myLinkList);
     DLL_PushBack(9, &myLinkList);
 
     printf("%p\n", DLL_Find(9, &myLinkList));

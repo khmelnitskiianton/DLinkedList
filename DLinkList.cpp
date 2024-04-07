@@ -61,14 +61,9 @@ int DLL_Dtor (DLL_LinkList_t* myLinkList)
 
     if (!(myLinkList->Head)) return 1;
 
-    DLL_Node_t* NextNode = NULL;
-
-    NextNode = (myLinkList->Head)->Next;
-
-    while(NextNode != NULL)
+    while(myLinkList->Head)
     {
         DLL_PopFront(myLinkList);
-        NextNode = (myLinkList->Head)->Next;
     }
 
     return 1;
@@ -144,11 +139,12 @@ DLL_Node_t* DLL_PushBack  (DLL_Elem_t Value, DLL_LinkList_t* myLinkList)
 int DLL_PopFront  (DLL_LinkList_t* myLinkList)
 {
     MYASSERT(myLinkList, BAD_POINTER_PASSED_IN_FUNC, return 0)
-    MYASSERT(myLinkList->Head, POP_FRONT_BUT_HEAD_NULL, return 0)
+
+    if (!(myLinkList->Head)) return 1;
 
     DLL_Node_t* PopNode = myLinkList->Head;
     myLinkList->Head = PopNode->Next;
-    (myLinkList->Head)->Prev = NULL;
+    if (myLinkList->Head) (myLinkList->Head)->Prev = NULL;
 
     free(PopNode);
     
